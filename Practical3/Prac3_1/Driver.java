@@ -1,0 +1,36 @@
+package Practical3.Prac3_1;
+
+public class Driver
+{
+    public static void main(String[] args) {
+
+        Point[] points = {
+                new Point(1, 2),
+                new Point(3, 4),
+                new Point(1, 2),
+                new Point(5, 6),
+                new Point(3, 4),
+                new Point(4 ,8)
+        };
+
+        int distinct = 0;
+
+        for (int i = 0; i < points.length; i++) {
+
+            boolean found = false;
+
+            for (int j = 0; j < i; j++) {
+                if (points[i].equals(points[j])) {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found) {
+                distinct++;
+            }
+        }
+
+        System.out.println("Distinct: " + distinct);
+    }
+}
