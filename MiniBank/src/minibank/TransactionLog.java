@@ -1,0 +1,13 @@
+package minibank;
+import java.io.IOException;
+import java.nio.file.*;
+import java.nio.charset.StandardCharsets;
+public final class TransactionLog {
+    private TransactionLog() {}
+    public static void append(Path file, String line) throws IOException {
+        Path parent = file.toAbsolutePath().getParent();
+        if (parent != null) Files.createDirectories(parent);
+        Files.writeString(file, line + System.lineSeparator(), StandardCharsets.UTF_8,
+            StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+    }
+}
